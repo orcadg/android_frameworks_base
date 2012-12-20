@@ -19,6 +19,7 @@ package android.telephony;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.os.SystemProperties;
 import android.util.Log;
 
 /**
@@ -433,6 +434,15 @@ public class SignalStrength implements Parcelable {
     /** @hide */
     public int getLteCqi() {
         return mLteCqi;
+    }
+
+    public boolean needsOldRilFeature(String feature) {
+        String[] features = SystemProperties.get("ro.telephony.ril.v3", "").split(",");
+        for (String found: features) {
+            if (found.equals(feature))
+                return true;
+        }
+        return false;
     }
 
     /**
