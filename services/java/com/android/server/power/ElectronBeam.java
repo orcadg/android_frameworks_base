@@ -60,8 +60,8 @@ final class ElectronBeam {
     // The relative proportion of the animation to spend performing
     // the horizontal stretch effect.  The remainder is spent performing
     // the vertical stretch effect.
-    private static final float HSTRETCH_DURATION = 0.5f;
-    private static final float VSTRETCH_DURATION = 1.0f - HSTRETCH_DURATION;
+    private static final float VSTRETCH_DURATION = 0.5f;
+    private static final float HSTRETCH_DURATION = 1.0f - VSTRETCH_DURATION;
 
     // The number of frames to draw when preparing the animation so that it will
     // be ready to run smoothly.  We use 3 frames because we are triple-buffered.
@@ -343,16 +343,16 @@ final class ElectronBeam {
     }
 
     private static void setVStretchQuad(FloatBuffer vtx, float dw, float dh, float a) {
-        final float w = dw + (dw * a);
-        final float h = dh - (dh * a);
+        final float w = dw - (dw * a);
+        final float h = dh + (dh * a);
         final float x = (dw - w) * 0.5f;
         final float y = (dh - h) * 0.5f;
         setQuad(vtx, x, y, w, h);
     }
 
     private static void setHStretchQuad(FloatBuffer vtx, float dw, float dh, float a) {
-        final float w = dw + (dw * a);
-        final float h = 1.0f;
+        final float w = 1.0f;
+        final float h = dw + (dw * a);
         final float x = (dw - w) * 0.5f;
         final float y = (dh - h) * 0.5f;
         setQuad(vtx, x, y, w, h);
