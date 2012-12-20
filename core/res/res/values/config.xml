@@ -305,6 +305,10 @@
          Default value is 2 minutes. -->
     <integer translatable="false" name="config_wifi_driver_stop_delay">120000</integer>
 
+    <!-- Boolean indicating whether the start command should be called on the wireless interface
+         when starting the SoftAp -->
+    <bool name="config_wifiApStartInterface">false</bool>
+
     <!-- Flag indicating whether the we should enable the automatic brightness in Settings.
          Software implementation will be used if config_hardware_auto_brightness_available is not set -->
     <bool name="config_automatic_brightness_available">false</bool>
@@ -1053,6 +1057,10 @@
 
     <!-- Boolean to enable stk functionality on Samsung phones -->
     <bool name="config_samsung_stk">false</bool>
+
+    <!-- empty string to disable, or like: /sys/kernel/fast_charge/force_fast_charge
+         it is disabled by default so devices need to add an overlay to enable-->
+    <string name="config_fastChargePath" translatable="false"></string>
 
     <!-- Disable the home key unlock setting -->
     <bool name="config_disableHomeUnlockSetting">true</bool>
